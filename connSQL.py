@@ -17,7 +17,7 @@ def connect_mysql(conn):
     cursor.execute('set names utf8')
     return cursor
 
-#建立连接游标
+#建立连接游标a
 cur = connect_mysql(conn)
 
 #2-添加数据库表头
