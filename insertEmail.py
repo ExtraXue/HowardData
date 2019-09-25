@@ -8,7 +8,7 @@ conn = pymysql.connect(
       host='127.0.0.1',
       port=3306,
       user='root',
-      passwd='ExtraXue123!',
+      passwd='root',
       db='email_find',
       charset='utf8mb4')
 def connect_mysql(conn):
@@ -80,7 +80,7 @@ for Account_Name in Accounts:
             else:
                 ConversationIndex_1 = ''
             if (hasattr(xx, 'Body')):  # 邮件内容
-                EmailBody_1 = xx.Body
+                EmailBody_1 = xx.Body[:25536]
             else:
                 EmailBody_1 = ''
 
@@ -141,7 +141,10 @@ for Account_Name in Accounts:
                         EmailBody_2 = ''
 
                     # 写入MySQL
-                    cur.execute(insert_sql, (Root_Directory_Name_2, Level_1_FolderName_2, Level_2_FolderName_2, ReceivedTime_2, SenderName_2,to_to_2, cc_cc_2, Subject_2, MessageID_2, ConversationTopic_2, ConversationID_2, ConversationIndex_2, EmailBody_2))
+                    cur.execute(insert_sql, (Root_Directory_Name_2, Level_1_FolderName_2,
+                                             Level_2_FolderName_2, ReceivedTime_2,
+                                             SenderName_2,to_to_2, cc_cc_2, Subject_2, MessageID_2,
+                                             ConversationTopic_2, ConversationID_2, ConversationIndex_2, EmailBody_2))
         else:
             pass
 
